@@ -2,7 +2,7 @@
  * @Author: wmzn-ltpp 1491579574@qq.com
  * @Date: 2023-11-09 21:32:28
  * @LastEditors: wmzn-ltpp 1491579574@qq.com
- * @LastEditTime: 2023-11-12 18:18:36
+ * @LastEditTime: 2023-11-12 18:42:51
  * @FilePath: \sqs-douyin-collection-download\utils\init.js
  * @Description: Email:1491579574@qq.com
  * QQ:1491579574
@@ -11,8 +11,8 @@
 const fs = require('fs');
 const path = require('path');
 const Console = require('sqs-console');
-const { sleep, show_error_exit_msg_time } = require('./base');
-const config_path = path.resolve(process.cwd()) + '/DouYinDownloadConfig.json';
+const { sleep, show_error_exit_msg_time, app_path } = require('./base');
+const config_path = app_path + '/DouYinDownloadConfig.json';
 
 /**
  * 生成配置

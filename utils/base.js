@@ -1,4 +1,6 @@
 const show_error_exit_msg_time = 10000;
+const app_path = '/DouYinDownload';
+
 const sleep = function (time) {
     return new Promise((resolve) => {
         try {
@@ -13,6 +15,7 @@ const sleep = function (time) {
 }
 
 module.exports = {
-    show_error_exit_msg_time,
-    sleep
+    sleep,
+    app_path,
+    show_error_exit_msg_time
 }

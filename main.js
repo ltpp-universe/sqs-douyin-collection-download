@@ -2,7 +2,7 @@
  * @Author: wmzn-ltpp 1491579574@qq.com
  * @Date: 2023-11-09 12:46:39
  * @LastEditors: wmzn-ltpp 1491579574@qq.com
- * @LastEditTime: 2023-11-12 17:48:36
+ * @LastEditTime: 2023-11-12 18:43:11
  * @FilePath: \sqs-douyin-collection-download\main.js
  * @Description: Email:1491579574@qq.com
  * QQ:1491579574
@@ -15,7 +15,7 @@ const Console = require('sqs-console');
 const { runSql } = require('./utils/db');
 const { readConfig } = require('./utils/init');
 const { getListcollection } = require('./utils/douyin');
-const { sleep, show_error_exit_msg_time } = require('./utils/base');
+const { sleep, show_error_exit_msg_time, app_path } = require('./utils/base');
 
 let video_url_list = [];
 let save_sql_up_finish = false;
@@ -339,11 +339,11 @@ const run = async function () {
 (async () => {
     const config = await readConfig();
     download = config.download;
-    save_path = path.resolve(process.cwd()) + config.save_path;
-    save_sql_path = path.resolve(process.cwd()) + config.save_sql_path;
+    save_path = app_path + config.save_path;
+    save_sql_path = app_path + config.save_sql_path;
     updatedatabase = config.updatedatabase;
-    save_progress_path = path.resolve(process.cwd()) + config.save_progress_path;
-    save_cursor_list_path = path.resolve(process.cwd()) + config.save_cursor_list_path;
+    save_progress_path = app_path + config.save_progress_path;
+    save_cursor_list_path = app_path + config.save_cursor_list_path;
     update_list_length_limit = config.update_list_length_limit;
     max_no_update_time_to_delete = config.max_no_update_time_to_delete;
 
