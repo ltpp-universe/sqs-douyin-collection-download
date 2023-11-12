@@ -339,11 +339,11 @@ const run = async function () {
 (async () => {
     const config = await readConfig();
     download = config.download;
-    save_path = path.resolve(__dirname) + config.save_path;
-    save_sql_path = path.resolve(__dirname) + config.save_sql_path;
+    save_path = path.resolve(process.cwd()) + config.save_path;
+    save_sql_path = path.resolve(process.cwd()) + config.save_sql_path;
     updatedatabase = config.updatedatabase;
-    save_progress_path = path.resolve(__dirname) + config.save_progress_path;
-    save_cursor_list_path = path.resolve(__dirname) + config.save_cursor_list_path;
+    save_progress_path = path.resolve(process.cwd()) + config.save_progress_path;
+    save_cursor_list_path = path.resolve(process.cwd()) + config.save_cursor_list_path;
     update_list_length_limit = config.update_list_length_limit;
     max_no_update_time_to_delete = config.max_no_update_time_to_delete;
 

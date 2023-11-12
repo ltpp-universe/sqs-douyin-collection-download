@@ -12,7 +12,7 @@ const fs = require('fs');
 const path = require('path');
 const Console = require('sqs-console');
 const { sleep, show_error_exit_msg_time } = require('./base');
-const config_path = path.resolve(__dirname) + '/DouYinDownloadConfig.json';
+const config_path = path.resolve(process.cwd()) + '/DouYinDownloadConfig.json';
 
 /**
  * 生成配置
