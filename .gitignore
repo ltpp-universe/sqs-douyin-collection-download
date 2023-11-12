@@ -1,0 +1,7 @@
+**/node
+progress
+video.db
+cursor_list
+**/node_modules
+DouYinDownload/**
+DouYinDownloadConfig.json
