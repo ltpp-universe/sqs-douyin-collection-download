@@ -215,14 +215,14 @@ const saveSql = async function () {
             for (let i = 0; i < len; ++i) {
                 const tem = video_url_list[i];
                 // 查询name是否存在
-                const query_has_child_sql = `EXISTS(SELECT 1 FROM video WHERE name = '${tem.name}' AND isdel = 0)`;
+                const query_has_child_sql = `EXISTS(SELECT 1 FROM video WHERE name = '${tem.name}' AND isdel = 0 AND isdouyin = 1)`;
                 const query_has_sql = `SELECT ${query_has_child_sql};`;
                 const query_has_res = await runSql(query_has_sql);
                 if (query_has_res?.length) {
                     let has = query_has_res[0][query_has_child_sql] == 1;
                     // name存在则更新url
                     if (has) {
-                        const query_update_sql = `UPDATE video SET url = '${tem.url}', isdouyin = 1 WHERE name = '${tem.name}' AND isdel = 0;`;
+                        const query_update_sql = `UPDATE video SET url = '${tem.url}' WHERE name = '${tem.name}' AND isdel = 0 AND isdouyin = 1;`;
                         await runSql(query_update_sql);
                         continue;
                     }
@@ -249,7 +249,7 @@ const saveSql = async function () {
                 return resolve();
             }
             sql = sql.slice(0, sql.length - 1) +
-                `;UPDATE video SET isdel = 1, time = NOW() WHERE isdouyin = 1 AND time < NOW() - INTERVAL ${max_no_update_time_to_delete} MINUTE;`;
+                `;UPDATE video SET isdel = 1, time = NOW() WHERE isdouyin = 1 AND isdel = 0 AND time < NOW() - INTERVAL ${max_no_update_time_to_delete} MINUTE;`;
             fs.mkdirSync(path.dirname(save_sql_path), { recursive: true });
             fs.writeFileSync(save_sql_path, sql);
             Console.log(0, `SQL文件保存在${save_sql_path}`);
