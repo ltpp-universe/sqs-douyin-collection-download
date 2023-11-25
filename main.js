@@ -15,7 +15,7 @@ const Console = require('sqs-console');
 const { runSql } = require('./utils/db');
 const { readConfig } = require('./utils/init');
 const { getListcollection } = require('./utils/douyin');
-const { sleep, show_error_exit_msg_time, app_path } = require('./utils/base');
+const { sleep, show_error_exit_msg_time, app_path, app_config_path } = require('./utils/base');
 
 let video_url_list = [];
 let save_sql_up_finish = false;
@@ -299,7 +299,7 @@ const run = async function () {
                 const res = await getListcollection(limit, cursor);
                 if (!res?.aweme_list?.length) {
                     if (!cursor) {
-                        Console.log(0, '请重新填写config.json中的cookie后重新运行');
+                        Console.log(0, `请重新填写${app_path}${app_config_path}中的cookie后重新运行`);
                         await sleep(show_error_exit_msg_time);
                         process.exit(0);
                     }

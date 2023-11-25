@@ -11,8 +11,8 @@
 const fs = require('fs');
 const path = require('path');
 const Console = require('sqs-console');
-const { sleep, show_error_exit_msg_time, app_path } = require('./base');
-const config_path = app_path + '/DouYinDownloadConfig.json';
+const { sleep, show_error_exit_msg_time, app_path, app_config_path } = require('./base');
+const config_path = app_path + app_config_path;
 
 /**
  * 生成配置
