@@ -22,7 +22,7 @@ const creatConfig = async function () {
         if (fs.existsSync(config_path)) {
             return Promise.resolve();
         }
-        const config_str = '{"db_host":"127.0.0.1","db_username":"","db_password":"","db_port":"3366","db_database":"","cookie":"","save_sql_path":"/video.db","save_progress_path":"/progress","save_path":"/video/","save_cursor_list_path":"/cursor_list","download":true,"updatedatabase":false,"update_list_length_limit":1000,"max_no_update_time_to_delete":30}';
+        const config_str = '{"db_host":"127.0.0.1","db_username":"","db_password":"","db_port":3366,"db_database":"","cookie":"","save_sql_path":"/video.db","save_progress_path":"/progress","save_path":"/video/","save_cursor_list_path":"/cursor_list","download":true,"updatedatabase":false,"update_list_length_limit":1000,"max_no_update_time_to_delete":30}';
         fs.mkdirSync(path.dirname(config_path), { recursive: true });
         fs.writeFileSync(config_path, config_str);
         Console.log(0, `请填写配置文件（${config_path}）的必备字段后重新运行`);
