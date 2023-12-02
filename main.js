@@ -2,7 +2,7 @@
  * @Author: wmzn-ltpp 1491579574@qq.com
  * @Date: 2023-11-09 12:46:39
  * @LastEditors: wmzn-ltpp 1491579574@qq.com
- * @LastEditTime: 2023-11-12 18:43:11
+ * @LastEditTime: 2023-12-02 18:01:08
  * @FilePath: \sqs-douyin-collection-download\main.js
  * @Description: Email:1491579574@qq.com
  * QQ:1491579574
@@ -312,11 +312,11 @@ const run = async function () {
                 const promise_list = aweme_list.map(async (tem) => {
                     const video_url = tem?.video?.bit_rate[0]?.play_addr?.url_list[0];
                     if (download && video_url && tem.aweme_id) {
-                        await saveVideo(tem.aweme_id, tem.preview_title, video_url);
+                        await saveVideo(tem.aweme_id, tem.desc ?? '', video_url);
                         ++get_video_cnt;
                     }
                     if (updatedatabase && video_url && tem.aweme_id) {
-                        saveUrl(tem.aweme_id, tem.preview_title, video_url);
+                        saveUrl(tem.aweme_id, tem.desc ?? '', video_url);
                         ++get_video_cnt;
                     }
                 });
