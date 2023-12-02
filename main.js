@@ -2,7 +2,7 @@
  * @Author: wmzn-ltpp 1491579574@qq.com
  * @Date: 2023-11-09 12:46:39
  * @LastEditors: wmzn-ltpp 1491579574@qq.com
- * @LastEditTime: 2023-12-02 18:01:08
+ * @LastEditTime: 2023-12-03 00:22:22
  * @FilePath: \sqs-douyin-collection-download\main.js
  * @Description: Email:1491579574@qq.com
  * QQ:1491579574
@@ -306,7 +306,7 @@ const run = async function () {
                     await upAndSaveSql(cursor_list);
                     return resolve(true);
                 }
-                cursor = res.cursor_str;
+                cursor = res.cursor;
                 saveProgress(last_cursor);
                 const aweme_list = res.aweme_list;
                 const promise_list = aweme_list.map(async (tem) => {
