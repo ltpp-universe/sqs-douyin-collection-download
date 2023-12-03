@@ -218,8 +218,8 @@ const saveSql = async function () {
                 const query_has_child_sql = `EXISTS(SELECT 1 FROM video WHERE name = '${tem.name}' AND isdel = 0 AND isdouyin = 1)`;
                 const query_has_sql = `SELECT ${query_has_child_sql};`;
                 const query_has_res = await runSql(query_has_sql);
-                if (query_has_res?.length && query_has_res[0] && query_has_res[0][query_has_child_sql]) {
-                    let has = query_has_res[0][query_has_child_sql] == 1;
+                if (query_has_res?.length && query_has_res?.[0] && query_has_res?.[0][query_has_child_sql]) {
+                    let has = query_has_res?.[0][query_has_child_sql] == 1;
                     // name存在则更新url
                     if (has) {
                         const query_update_sql = `UPDATE video SET url = '${tem.url}' WHERE name = '${tem.name}' AND isdel = 0 AND isdouyin = 1;`;
@@ -310,7 +310,7 @@ const run = async function () {
                 saveProgress(last_cursor);
                 const aweme_list = res.aweme_list;
                 const promise_list = aweme_list.map(async (tem) => {
-                    const video_url = tem?.video?.bit_rate[0]?.play_addr?.url_list[0];
+                    const video_url = tem?.video?.bit_rate?.[0]?.play_addr?.url_list?.[0];
                     if (download && video_url && tem.aweme_id) {
                         await saveVideo(tem.aweme_id, tem.desc ?? '', video_url);
                         ++get_video_cnt;
@@ -337,7 +337,6 @@ const run = async function () {
 };
 
 (async () => {
-
     const config = await readConfig();
     download = config.download;
     save_path = app_path + config.save_path;
