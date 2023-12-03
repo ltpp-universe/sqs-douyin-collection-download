@@ -2,7 +2,7 @@
  * @Author: wmzn-ltpp 1491579574@qq.com
  * @Date: 2023-11-09 12:46:39
  * @LastEditors: wmzn-ltpp 1491579574@qq.com
- * @LastEditTime: 2023-12-03 00:22:22
+ * @LastEditTime: 2023-12-03 23:34:52
  * @FilePath: \sqs-douyin-collection-download\main.js
  * @Description: Email:1491579574@qq.com
  * QQ:1491579574
@@ -218,7 +218,7 @@ const saveSql = async function () {
                 const query_has_child_sql = `EXISTS(SELECT 1 FROM video WHERE name = '${tem.name}' AND isdel = 0 AND isdouyin = 1)`;
                 const query_has_sql = `SELECT ${query_has_child_sql};`;
                 const query_has_res = await runSql(query_has_sql);
-                if (query_has_res?.length) {
+                if (query_has_res?.length && query_has_res[0] && query_has_res[0][query_has_child_sql]) {
                     let has = query_has_res[0][query_has_child_sql] == 1;
                     // name存在则更新url
                     if (has) {
@@ -337,6 +337,7 @@ const run = async function () {
 };
 
 (async () => {
+
     const config = await readConfig();
     download = config.download;
     save_path = app_path + config.save_path;
@@ -350,18 +351,27 @@ const run = async function () {
     if (updatedatabase) {
         let lock = false;
         while (1) {
-            if (lock) {
-                continue;
-            }
-            lock = true;
-            run_res = await run();
-            if (run_res) {
-                lock = false;
-            } else {
+            try {
+                if (lock) {
+                    continue;
+                }
                 lock = true;
+                run_res = await run();
+                if (run_res) {
+                    lock = false;
+                } else {
+                    lock = true;
+                }
+            } catch (err) {
+                lock = false;
+                Console.log(0, `爬取失败:${err}`, 'BgRed');
             }
         };
     } else {
-        await run();
+        try {
+            await run();
+        } catch (err) {
+            Console.log(0, `下载失败:${err}`, 'BgRed');
+        }
     }
 })();
