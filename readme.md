@@ -1,13 +1,3 @@
-<!--
- * @Author: wmzn-ltpp 1491579574@qq.com
- * @Date: 2023-11-10 09:34:18
- * @LastEditors: wmzn-ltpp 1491579574@qq.com
- * @LastEditTime: 2023-11-10 12:06:19
- * @FilePath: \sqs-douyin-collection-download\readme.md
- * @Description: Email:1491579574@qq.com
- * QQ:1491579574
- * Copyright (c) 2023 by SQS, All Rights Reserved. 
--->
 # 抖音收藏视频批量爬取
 
 > 抖音收藏视频批量爬取工具，支持win(64-bit),linux(64-bit),mac(64-bit)
