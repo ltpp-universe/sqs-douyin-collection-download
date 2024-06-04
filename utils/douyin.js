@@ -1,7 +1,7 @@
 /*
- * @Author: wmzn-ltpp 1491579574@qq.com
+ * @Author: ltpp-universe 1491579574@qq.com
  * @Date: 2023-11-09 14:17:44
- * @LastEditors: wmzn-ltpp 1491579574@qq.com
+ * @LastEditors: ltpp-universe 1491579574@qq.com
  * @LastEditTime: 2023-11-10 12:37:04
  * @FilePath: \sqs-douyin-collection-download\utils\douyin.js
  * @Description: Email:1491579574@qq.com

@@ -1,7 +1,7 @@
 /*
- * @Author: wmzn-ltpp 1491579574@qq.com
+ * @Author: ltpp-universe 1491579574@qq.com
  * @Date: 2023-11-09 21:16:22
- * @LastEditors: wmzn-ltpp 1491579574@qq.com
+ * @LastEditors: ltpp-universe 1491579574@qq.com
  * @LastEditTime: 2023-11-10 00:25:25
  * @FilePath: \node\utils\db.js
  * @Description: Email:1491579574@qq.com
