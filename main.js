@@ -78,7 +78,12 @@ const saveVideo = async function (aweme_id, preview_title, video_url) {
             Console.log(0, `${preview_title}.mp4开始下载`, 'BgCyan');
             creatDirNotExists(save_path);
             const file = fs.createWriteStream(`${save_path}${preview_title}.mp4`);
-            http.get(video_url, function (response) {
+            const options = {
+                headers: {
+                    Referer: video_url,
+                }
+            };
+            http.get(video_url, options, function (response) {
                 const len = parseInt(response.headers['content-length'], 10);
                 let cur = 0;
                 const mp = new Map();
