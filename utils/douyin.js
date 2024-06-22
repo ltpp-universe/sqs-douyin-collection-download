@@ -10,6 +10,7 @@
  */
 const { listcollection_url, like_url } = require('./url');
 const { readConfig } = require('./init');
+const { aid } = require('./base');
 const axios = require('axios');
 let cookie = '';
 const user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0';
@@ -41,13 +42,12 @@ const getListcollection = async function (count, cursor) {
 
 /**
  * 获取喜欢列表
- * @param {*} aid 
  * @param {*} sec_uid 
  * @param {*} count 
  * @param {*} cursor 
  * @returns 
  */
-const getLike = async function (aid, sec_uid, count, cursor) {
+const getLike = async function (sec_uid, count, cursor) {
     const { data: res } = await axios({
         method: 'post',
         url: like_url,
