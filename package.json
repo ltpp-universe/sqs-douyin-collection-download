@@ -1,22 +1,22 @@
 {
   "name": "sqs-douyin-collection-download",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "main.js",
   "bin": {
     "sqs-douyin-collection-download": "main.js"
   },
   "engines": {
-    "node": "20.9.0"
+    "node": ">=18.20.3"
   },
   "pkg": {
     "scripts": [
       "main.js"
     ],
     "targets": [
-      "node20.9.0-linux-x64",
-      "node20.9.0-win-x64",
-      "node20.9.0-macos-x64"
+      "node18-linux-x64",
+      "node18-win-x64",
+      "node18-darwin-x64"
     ],
     "assets": [
       "node_modules/**/*",
@@ -27,9 +27,11 @@
   "scripts": {
     "start": "node main.js",
     "install-pkg": "cnpm install -g pkg",
-    "pkg-linux": "pkg . --targets linux --node-version ./node/node-v20.9.0-linux-x64/bin/node --compress Brotli --public",
-    "pkg-win": "pkg . --targets win --node-version ./node/node-v20.9.0-win-x64/node.exe --compress Brotli --public",
-    "pkg-mac": "pkg . --targets macos --node-version ./node/node-v20.9.0-darwin-x64/bin/node --compress Brotli --public"
+    "b": "pkg .",
+    "pkg-linux": "pkg . --targets linux --node-version ./node/node-v18.20.3-linux-x64/bin/node --compress Brotli --public",
+    "pkg-win": "pkg . --targets win --node-version ./node/node-v18.20.3-win-x64/node.exe --compress Brotli --public",
+    "pkg-mac": "pkg . --targets macos --node-version ./node/node-v18.20.3-darwin-x64/bin/node --compress Brotli --public",
+    "build": "npm run pkg-win && npm run pkg-linux"
   },
   "keywords": [],
   "author": "",
@@ -38,5 +40,8 @@
     "axios": "^1.6.1",
     "mysql": "^2.18.1",
     "sqs-console": "^1.0.1"
+  },
+  "devDependencies": {
+    "pkg": "5.8.1"
   }
 }
